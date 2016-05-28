@@ -6,19 +6,19 @@ import assign from 'object-assign';
 const CHANGE_EVENT = 'change';
 
 const data =
-  localStorage.getItem("data") ?
-  JSON.parse(localStorage.getItem("data")) : {
-  people: {
+  localStorage.getItem('data') ?
+  JSON.parse(localStorage.getItem('data')) : {
+    people: {
 
-  },
-  coffee: {
+    },
+    coffee: {
 
-  },
-  appStatus: {
-    whoIs: 'all',
-    whatCoffee: 'all',
-  },
-};
+    },
+    appStatus: {
+      whoIs: 'all',
+      whatCoffee: 'all',
+    },
+  };
 
 const createPerson = (name) => {
   const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(32);
@@ -27,7 +27,7 @@ const createPerson = (name) => {
     name,
   };
 
-  data.people[name] = person;
+  data.people[id] = person;
 };
 
 const createCoffee = (name) => {
@@ -39,12 +39,17 @@ const createCoffee = (name) => {
     lists: [],
   };
 
-  data.coffee[name] = coffee;
+  data.coffee[id] = coffee;
+};
+
+const removeList = (id, whatCoffee) => {
+  // data.coffee[whatCoffee].lists의 에서 id=id인 것을 찾아 지운다.
 };
 
 const CoffeeStore = assign({}, EventEmitter.prototype, {
 
   getAll() {
+    console.log(data);
     return data;
   },
 
@@ -71,14 +76,14 @@ AppDispatcher.register((action) => {
 
   switch (action.actionType) {
   case CoffeeConstants.COFFEE_CREATE :
-    text = action.text.trim();
+    text = action.name.trim();
     if (text !== '') {
-      createPerson(text);
+      createCoffee(text);
       CoffeeStore.emitChange();
     }
     break;
   case CoffeeConstants.PERSON_CREATE :
-    text = action.text.trim();
+    text = action.name.trim();
     if (text !== '') {
       createPerson(text);
       CoffeeStore.emitChange();

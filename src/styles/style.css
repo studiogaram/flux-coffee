@@ -84,6 +84,10 @@ body {
   margin-left: 16px;
 }
 
+.active {
+  border: 0px;
+}
+
 .board-result .tools .rate-star {}
 
 .board-result .tools .star {}
@@ -100,7 +104,6 @@ body {
   height: 100px;
   width: 100%;
   background-color: #3A636F;
-  overflow-x: auto;
   white-space: nowrap;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -116,7 +119,9 @@ body {
   height: 100px;
   width: 100%;
   background-color: #66CEA7;
+  white-space: nowrap;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .navbar-people .item {}

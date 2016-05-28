@@ -21,7 +21,7 @@ export default class ResultBoard extends React.Component {
               <thead>
                 <tr>
                   <th>No.</th>
-                  <th>Time</th>
+                  <th>먹은 시간</th>
                   <th></th>
                 </tr>
               </thead>

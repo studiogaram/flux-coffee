@@ -14,6 +14,7 @@ const CoffeeActions = {
       name,
     });
   },
+
 };
 
 module.exports = CoffeeActions;

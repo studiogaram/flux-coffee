@@ -37,9 +37,11 @@ export default class CoffeeApp extends React.Component {
       <div>
         <ResultBoard />
         <CoffeeNavbar
+          dataCoffee={this.state.data.coffee}
           onClickFilter={this.onClickFilter}
         />
         <PeopleNavbar
+          dataPeople={this.state.data.people}
           onClickFilter={this.onClickFilter}
         />
       </div>
