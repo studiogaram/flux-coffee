@@ -14,7 +14,7 @@ const data =
     coffee: {
 
     },
-    appStatus: {
+    filter: {
       whoIs: 'all',
       whatCoffee: 'all',
     },
@@ -35,11 +35,19 @@ const createCoffee = (name) => {
   const coffee = {
     id,
     name,
-    rate: 0,
+    rates: [],
     lists: [],
   };
 
   data.coffee[id] = coffee;
+};
+
+const setFilter = (type, id) => {
+  if (type === 'person') {
+    data.filter['whoIs'] = id;
+  } else if (type === 'coffee') {
+    data.filter['whatCoffee'] = id;
+  }
 };
 
 const removeList = (id, whatCoffee) => {
@@ -86,6 +94,12 @@ AppDispatcher.register((action) => {
     text = action.name.trim();
     if (text !== '') {
       createPerson(text);
+      CoffeeStore.emitChange();
+    }
+    break;
+  case CoffeeConstants.SET_FILTER :
+    if (text !== '') {
+      setFilter(action.type, action.id);
       CoffeeStore.emitChange();
     }
     break;

@@ -14,7 +14,13 @@ const CoffeeActions = {
       name,
     });
   },
-
+  setFilter(type, id) {
+    AppDispatcher.dispatch({
+      actionType: CoffeeConstants.SET_FILTER,
+      type,
+      id,
+    });
+  },
 };
 
 module.exports = CoffeeActions;

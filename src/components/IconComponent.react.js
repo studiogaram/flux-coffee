@@ -8,9 +8,11 @@ export default class IconComponent extends React.Component {
   render() {
     return (
       <div
-        className="icon-default"
+        className={this.props.isActive ? 'icon-default active' : 'icon-default' }
         onClick={this.props.onClick}
-        title={this.props.type+'의 리스트입니다.'}
+        data-type={this.props.dataType}
+        data-id={this.props.dataId}
+        title={this.props.dataType+'의 리스트입니다.'}
         >
         {this.props.name}
       </div>

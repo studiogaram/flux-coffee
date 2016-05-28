@@ -17,7 +17,9 @@ export default class CoffeeNavbar extends React.Component {
 
     for (let id in this.props.dataCoffee) {
       items.push(<IconComponent
-        type="coffee"
+        dataType="coffee"
+        dataId={id}
+        isActive={id===this.props.filterCoffee}
         key={id}
         name={this.props.dataCoffee[id].name}
         onClick={this.props.onClickFilter}

@@ -28,8 +28,10 @@ export default class CoffeeApp extends React.Component {
     this.setState(getCoffeeState());
   }
 
-  onClickFilter() {
-    alert('f');
+  onClickFilter(event) {
+    const type = event.target.getAttribute('data-type');
+    const id = event.target.getAttribute('data-id');
+    CoffeeActions.setFilter(type, id);
   }
 
   render() {
@@ -39,10 +41,12 @@ export default class CoffeeApp extends React.Component {
         <CoffeeNavbar
           dataCoffee={this.state.data.coffee}
           onClickFilter={this.onClickFilter}
+          filterCoffee={this.state.data.filter.whatCoffee}
         />
         <PeopleNavbar
           dataPeople={this.state.data.people}
           onClickFilter={this.onClickFilter}
+          filterPeople={this.state.data.filter.whoIs}
         />
       </div>
     );

@@ -17,7 +17,9 @@ export default class PeopleNavbar extends React.Component {
 
     for (let id in this.props.dataPeople) {
       items.push(<IconComponent
-        type="person"
+        dataType="person"
+        isActive={id===this.props.filterPeople}
+        dataId={id}
         key={id}
         name={this.props.dataPeople[id].name}
         onClick={this.props.onClickFilter}
