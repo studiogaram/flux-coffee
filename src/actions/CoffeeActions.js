@@ -29,6 +29,12 @@ const CoffeeActions = {
       coffee,
     });
   },
+  removeList(id) {
+    AppDispatcher.dispatch({
+      actionType: CoffeeConstants.LIST_REMOVE,
+      id,
+    });
+  },
   setFilter(type, id) {
     AppDispatcher.dispatch({
       actionType: CoffeeConstants.SET_FILTER,

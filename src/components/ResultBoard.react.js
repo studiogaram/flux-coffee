@@ -17,8 +17,10 @@ export default class ResultBoard extends React.Component {
 
     const person = this.props.selectedPeople;
     const coffee = this.props.selectedCoffee;
-    const rate = coffee.rates[person.id] ? coffee.rates[person.id].rate : 0;
-    console.log(this.props);
+    let rate = 0;
+    if (person.id || '') {
+      rate = coffee.rates[person.id] ? coffee.rates[person.id].rate : 0;
+    }
 
     const listHeader = this.props.selectedPeople ? <div className="list-header">
             {person.name}가 먹어왔던 {coffee.name}의 흔적

@@ -1,8 +1,15 @@
 import React from 'react';
+import CoffeeActions from '../actions/CoffeeActions';
+
 export default class ListComponent extends React.Component {
   constructor(props) {
     super(props);
+    this.removeList = this.removeList.bind(this);
+  }
 
+  removeList() {
+    console.log(this.props.id);
+    CoffeeActions.removeList(this.props.id);
   }
 
   render() {
@@ -31,7 +38,13 @@ export default class ListComponent extends React.Component {
       <tr>
         <td>{this.props.order}</td>
         <td>{today}</td>
-        <td><button>Remove</button></td>
+        <td>
+          <button
+            onClick={this.removeList}
+          >
+            Remove
+          </button>
+        </td>
       </tr>
     );
   }

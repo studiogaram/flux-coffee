@@ -71,8 +71,11 @@ const setFilter = (type, id) => {
   }
 };
 
-const removeList = (id, whatCoffee) => {
-  // data.coffee[whatCoffee].lists의 에서 id=id인 것을 찾아 지운다.
+const removeList = (id) => {
+  console.log(id);
+  data.lists = data.lists.filter(item =>
+    item.id !== id
+  );
 };
 
 const CoffeeStore = assign({}, EventEmitter.prototype, {
@@ -127,6 +130,12 @@ AppDispatcher.register((action) => {
   case CoffeeConstants.LIST_CREATE :
     if (text !== '') {
       createList(action.person, action.coffee);
+      CoffeeStore.emitChange();
+    }
+    break;
+  case CoffeeConstants.LIST_REMOVE :
+    if (text !== '') {
+      removeList(action.id);
       CoffeeStore.emitChange();
     }
     break;
