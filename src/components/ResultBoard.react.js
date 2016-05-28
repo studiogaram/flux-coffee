@@ -17,17 +17,20 @@ export default class ResultBoard extends React.Component {
 
     const person = this.props.selectedPeople;
     const coffee = this.props.selectedCoffee;
+    const rate = coffee.rates[person.id] ? coffee.rates[person.id].rate : 0;
     console.log(this.props);
 
     const listHeader = this.props.selectedPeople ? <div className="list-header">
             {person.name}가 먹어왔던 {coffee.name}의 흔적
           </div> : '';
-          
 
     return (
       <div className="board-result">
         <ToolComponent
+          person={person}
+          coffee={coffee}
           createList={this.createList}
+          currentRate={rate}
         />
         <div className="list">
           {listHeader}
@@ -41,7 +44,16 @@ export default class ResultBoard extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {}
+                {this.props.resultLists.map((item, i) => {
+                  return (
+                    <ListComponent
+                      key={i}
+                      time={item.time}
+                      order={i}
+                      id={item.id}
+                    />
+                  );
+                })}
               </tbody>
             </table>
           </div>

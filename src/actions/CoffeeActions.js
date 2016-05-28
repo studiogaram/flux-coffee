@@ -14,6 +14,14 @@ const CoffeeActions = {
       name,
     });
   },
+  rateCoffee(person, coffee, rate) {
+    AppDispatcher.dispatch({
+      actionType: CoffeeConstants.COFFEE_RATE,
+      person,
+      coffee,
+      rate,
+    });
+  },
   createList(person, coffee) {
     AppDispatcher.dispatch({
       actionType: CoffeeConstants.LIST_CREATE,

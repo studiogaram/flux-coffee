@@ -41,7 +41,7 @@ export default class CoffeeApp extends React.Component {
     const selectedPeople = filterPeople === 'all' ? false : this.state.data.people[filterPeople];
 
     const listItems = this.state.data.lists.filter(item =>
-      item.person === filterPeople
+      item.person === filterPeople && item.coffee === filterCoffee
     );
 
     return (
@@ -51,7 +51,7 @@ export default class CoffeeApp extends React.Component {
           filterPeople={filterPeople}
           selectedCoffee={selectedCoffee}
           selectedPeople={selectedPeople}
-          lists={listItems}
+          resultLists={listItems}
         />
         <CoffeeNavbar
           dataCoffee={this.state.data.coffee}

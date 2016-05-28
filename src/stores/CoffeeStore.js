@@ -42,6 +42,15 @@ const createCoffee = (name) => {
   data.coffee[id] = coffee;
 };
 
+const rateCoffee = (person, coffee, rate) => {
+  const rateInfo = {
+    person,
+    rate,
+  };
+
+  data.coffee[coffee].rates[person] = rateInfo;
+};
+
 const createList = (person, coffee) => {
   const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(32);
   const list = {
@@ -95,6 +104,13 @@ AppDispatcher.register((action) => {
   let text;
 
   switch (action.actionType) {
+  case CoffeeConstants.PERSON_CREATE :
+    text = action.name.trim();
+    if (text !== '') {
+      createPerson(text);
+      CoffeeStore.emitChange();
+    }
+    break;
   case CoffeeConstants.COFFEE_CREATE :
     text = action.name.trim();
     if (text !== '') {
@@ -102,10 +118,9 @@ AppDispatcher.register((action) => {
       CoffeeStore.emitChange();
     }
     break;
-  case CoffeeConstants.PERSON_CREATE :
-    text = action.name.trim();
+  case CoffeeConstants.COFFEE_RATE :
     if (text !== '') {
-      createPerson(text);
+      rateCoffee(action.person, action.coffee, action.rate);
       CoffeeStore.emitChange();
     }
     break;
