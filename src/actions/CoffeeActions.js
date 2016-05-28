@@ -14,6 +14,13 @@ const CoffeeActions = {
       name,
     });
   },
+  createList(person, coffee) {
+    AppDispatcher.dispatch({
+      actionType: CoffeeConstants.LIST_CREATE,
+      person,
+      coffee,
+    });
+  },
   setFilter(type, id) {
     AppDispatcher.dispatch({
       actionType: CoffeeConstants.SET_FILTER,

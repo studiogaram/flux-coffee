@@ -13,7 +13,10 @@ export default class ToolComponent extends React.Component {
         <div className="rate-star">
           f
         </div>
-        <div className="btn-add">
+        <div
+          className="btn-add"
+          onClick={this.props.createList}
+        >
           + 기록 추가
         </div>
       </div>

@@ -35,18 +35,33 @@ export default class CoffeeApp extends React.Component {
   }
 
   render() {
+    const filterCoffee = this.state.data.filter.whatCoffee;
+    const filterPeople = this.state.data.filter.whoIs;
+    const selectedCoffee = filterCoffee === 'all' ? false : this.state.data.coffee[filterCoffee];
+    const selectedPeople = filterPeople === 'all' ? false : this.state.data.people[filterPeople];
+
+    const listItems = this.state.data.lists.filter(item =>
+      item.person === filterPeople
+    );
+
     return (
       <div>
-        <ResultBoard />
+        <ResultBoard
+          filterCoffee={filterCoffee}
+          filterPeople={filterPeople}
+          selectedCoffee={selectedCoffee}
+          selectedPeople={selectedPeople}
+          lists={listItems}
+        />
         <CoffeeNavbar
           dataCoffee={this.state.data.coffee}
           onClickFilter={this.onClickFilter}
-          filterCoffee={this.state.data.filter.whatCoffee}
+          filterCoffee={filterCoffee}
         />
         <PeopleNavbar
           dataPeople={this.state.data.people}
           onClickFilter={this.onClickFilter}
-          filterPeople={this.state.data.filter.whoIs}
+          filterPeople={filterPeople}
         />
       </div>
     );

@@ -18,6 +18,7 @@ const data =
       whoIs: 'all',
       whatCoffee: 'all',
     },
+    lists: [],
   };
 
 const createPerson = (name) => {
@@ -35,11 +36,22 @@ const createCoffee = (name) => {
   const coffee = {
     id,
     name,
-    rates: [],
-    lists: [],
+    rates: {},
   };
 
   data.coffee[id] = coffee;
+};
+
+const createList = (person, coffee) => {
+  const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(32);
+  const list = {
+    id,
+    person,
+    coffee,
+    time: (+new Date()),
+  };
+
+  data.lists.push(list);
 };
 
 const setFilter = (type, id) => {
@@ -94,6 +106,12 @@ AppDispatcher.register((action) => {
     text = action.name.trim();
     if (text !== '') {
       createPerson(text);
+      CoffeeStore.emitChange();
+    }
+    break;
+  case CoffeeConstants.LIST_CREATE :
+    if (text !== '') {
+      createList(action.person, action.coffee);
       CoffeeStore.emitChange();
     }
     break;
