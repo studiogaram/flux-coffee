@@ -6,7 +6,6 @@ module.exports = {
     "extends": "airbnb",
     "parserOptions": {
         "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
             "jsx": true
         },
         "sourceType": "module"
@@ -34,11 +33,6 @@ module.exports = {
         "arrow-body-style": [
             "error",
             "as-needed"
-        ],
-        "jsx-no-bind": [<enabled>, {
-          "ignoreRefs": false,
-          "allowArrowFunctions": false,
-          "allowBind": true
-        }]
+        ]
     }
 };
