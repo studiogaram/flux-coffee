@@ -38,4 +38,6 @@ export default class CoffeeNavbar extends React.Component {
 
 CoffeeNavbar.propTypes = {
 
+  dataCoffee: React.propTypes.object.isRequired,
+
 };
