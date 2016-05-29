@@ -38,7 +38,5 @@ export default class ToolComponent extends React.Component {
 }
 
 ToolComponent.propTypes = {
-  type: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired,
+
 };

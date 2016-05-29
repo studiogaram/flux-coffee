@@ -27,7 +27,9 @@ const createPerson = (name) => {
     id,
     name,
   };
-
+  if (!Object.keys(data.people).length) {
+    data.filter['whoIs'] = id;
+  }
   data.people[id] = person;
 };
 
@@ -38,7 +40,9 @@ const createCoffee = (name) => {
     name,
     rates: {},
   };
-
+  if (!Object.keys(data.coffee).length) {
+    data.filter['whatCoffee'] = id;
+  }
   data.coffee[id] = coffee;
 };
 
@@ -72,7 +76,6 @@ const setFilter = (type, id) => {
 };
 
 const removeList = (id) => {
-  console.log(id);
   data.lists = data.lists.filter(item =>
     item.id !== id
   );
@@ -81,13 +84,12 @@ const removeList = (id) => {
 const CoffeeStore = assign({}, EventEmitter.prototype, {
 
   getAll() {
-    console.log(data);
     return data;
   },
 
   emitChange() {
-    if(typeof(Storage) !== "undefined") {
-        localStorage.setItem("data", JSON.stringify(data));
+    if (typeof(Storage) !== 'undefined') {
+      localStorage.setItem('data', JSON.stringify(data));
     } else {
       alert('You Need to upgrade Web browser.');
     }

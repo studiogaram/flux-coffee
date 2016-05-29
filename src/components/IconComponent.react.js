@@ -1,10 +1,5 @@
 import React from 'react';
 export default class IconComponent extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-
   render() {
     return (
       <div
@@ -12,8 +7,8 @@ export default class IconComponent extends React.Component {
         onClick={this.props.onClick}
         data-type={this.props.dataType}
         data-id={this.props.dataId}
-        title={this.props.dataType+'의 리스트입니다.'}
-        >
+        title={this.props.dataType + '의 리스트입니다.'}
+      >
         {this.props.name}
       </div>
     );
@@ -21,7 +16,7 @@ export default class IconComponent extends React.Component {
 }
 
 IconComponent.propTypes = {
-  type: React.PropTypes.string.isRequired,
+  dataType: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
   onClick: React.PropTypes.func.isRequired,
 };

@@ -8,10 +8,6 @@ export default class PeopleNavbar extends React.Component {
 
   }
 
-  createPerson() {
-    CoffeeActions.createPerson('fad');
-  }
-
   render() {
     let items = [];
 
@@ -27,11 +23,18 @@ export default class PeopleNavbar extends React.Component {
     }
     return (
       <div className="navbar-people">
+        <IconComponent
+          dataType="person"
+          isActive={'all'===this.props.filterPeople}
+          dataId='all'
+          name="All"
+          onClick={this.props.onClickFilter}
+        />
         {items}
         <IconComponent
-          type="person"
+          dataType="person"
           name="사람 추가"
-          onClick={this.createPerson}
+          onClick={this.props.openModal}
         />
       </div>
     );

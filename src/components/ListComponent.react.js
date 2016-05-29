@@ -13,7 +13,6 @@ export default class ListComponent extends React.Component {
   }
 
   render() {
-
     let today = new Date(this.props.time);
     let dd = today.getDate();
     let mm = today.getMonth() + 1; //  1월은 0으로나옴
@@ -51,7 +50,5 @@ export default class ListComponent extends React.Component {
 }
 
 ListComponent.propTypes = {
-  type: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired,
+
 };

@@ -3,15 +3,6 @@ import IconComponent from './IconComponent.react';
 import CoffeeActions from '../actions/CoffeeActions';
 
 export default class CoffeeNavbar extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-
-  createCoffee() {
-    CoffeeActions.createCoffee('fasd');
-  }
-
   render() {
     let items = [];
 
@@ -19,7 +10,7 @@ export default class CoffeeNavbar extends React.Component {
       items.push(<IconComponent
         dataType="coffee"
         dataId={id}
-        isActive={id===this.props.filterCoffee}
+        isActive={id === this.props.filterCoffee}
         key={id}
         name={this.props.dataCoffee[id].name}
         onClick={this.props.onClickFilter}
@@ -27,11 +18,18 @@ export default class CoffeeNavbar extends React.Component {
     }
     return (
       <div className="navbar-coffee">
+        <IconComponent
+          dataType="coffee"
+          isActive={'all' === this.props.filterCoffee}
+          dataId='all'
+          name="All"
+          onClick={this.props.onClickFilter}
+        />
         {items}
         <IconComponent
-          type="coffee"
+          dataType="coffee"
           name="커피 추가"
-          onClick={this.createCoffee}
+          onClick={this.props.openModal}
         />
       </div>
     );
